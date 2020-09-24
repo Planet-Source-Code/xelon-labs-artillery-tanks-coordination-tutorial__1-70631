@@ -1,0 +1,224 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Coordination Tutorial</title>
+</head>
+
+<body leftmargin="10" style="font-family: Tahoma">
+
+<p>
+<b><font size="6" face="Segoe UI">Coordination Tutorial</font></b></p>
+<p><font face="Segoe UI">&nbsp;&nbsp; </font>&nbsp;<font face="MS Sans Serif">This 
+tutorial will teach you link of VB with trignometery. Stay back and fasten your 
+seat belts coz you are going on information super highway.</p>
+<p>&nbsp;&nbsp;&nbsp; First of all i will tell you the main 
+aim of this tutorial.By this tutorial you can create super apps with less code. 
+Also you will know about angles, graph presentation, conversion of angles and 
+magnitude into X and Y coordinates.</font></p>
+<p>&nbsp;</p>
+<p><font face="MS Sans Serif">&nbsp;&nbsp;&nbsp; Consider this graph</p>
+<p><img border="0" src="Graphs/Graph.GIF" width="256" height="256"></p>
+<p>&nbsp;&nbsp;&nbsp; Now it is obvious that there is a line 
+segment of coordinates and also angle and length. Normally we just draw lines by 
+specifying coordinates but if we are given angles and length of line, How can we 
+draw the line?</p>
+<p>&nbsp;&nbsp;&nbsp; The answer is simple and easy to 
+understand.</p>
+<p><img border="0" src="Graphs/Rangle.gif" width="256" height="256"></p>
+<p>&nbsp;&nbsp;&nbsp; We assume and convert the line into a 
+right angled triangle. Every line can be converted into a right angled 
+triangle.In the given figure z is the hypotenuse and also the length of line, Y 
+is altitude and X is base.By using trignometeric ratios on 'Fita' angle,</p>
+<ul type="square">
+  <li>Sin angle&nbsp; = Y/z</li>
+  <li>Cos angle = X/z</li>
+  <li>Tan angle = Y/X</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp; These are simple and crude ratios but 
+for using them in programming we have to refine them for utilization. In VB Sin, 
+Cos and Tan functions gives output in radians, for degrees the equation will 
+become,</p>
+<ul type="square">
+  <li>Sin(3.1416*angle/180) = Y/z</li>
+  <li>Cos(3.1416*angle/180) = X/z</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp; For finding X and Y</p>
+<ul type="square">
+  <li>Y = Sin(3.1416*angle/180) *z</li>
+  <li>X = Cos(3.1416*angle/180)*z</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp; These two ratios are sufficient for 
+finding coordinates or angles. First one can be used to find top value and 
+second one can be used to find left value. But it is not fully done. Consider 
+the diagram batween graph and screen</p>
+<p><img border="0" src="Graphs/Rel8.gif" width="420" height="256"></p>
+<p>&nbsp;&nbsp;&nbsp; It is evident from this figure that in 
+screen the value of Y coordinate has inverse effect on graph, to solve this 
+problem the equation for finding Y changes. </p>
+<ul type="square">
+  <li>Y = -(Sin(3.1416*angle/180) *z)</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp; So as the value of Y increases in 
+graph it will decrease in screen</p>
+<p>&nbsp;&nbsp;&nbsp; But we are not finished yet. We 
+converted line into a triangle but the location of output line is a problem</p>
+<p><img border="0" src="Graphs/loc8.GIF" width="256" height="256"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; It is necessary to ammend above the 
+equation now</p>
+</font><font face="Segoe UI">
+<ul type="square">
+  <li><b><font size="4">Y = -(Sin(3.1416 * angle / 180) * z) + Y position</font></b></li>
+  <li><b><font size="4">X =&nbsp;&nbsp; Cos(3.1416 * angle / 180)* z + X position</font></b></li>
+</ul>
+</font><font face="MS Sans Serif">
+<p>&nbsp;&nbsp;&nbsp; This is the final Equation and any 
+thing can be extracted from it</p>
+<hr color="#000000" size="3">
+
+<p>&nbsp;Given below are some problems, </font></p>
+<p><font face="Segoe UI">&nbsp;&nbsp;&nbsp; Q.1 There is a button on a form with 
+top as 500 and left as 600 and there is another button located at 60<sup>o</sup> 
+from it having 50 pixels distance from each other. Find the left and top of the 
+second button?</font></p>
+<p><font face="Segoe UI">&nbsp;&nbsp;&nbsp; Solution:-</font></p>
+<font face="Segoe UI">
+<p>&nbsp;&nbsp;&nbsp; Y = -(Sin(3.1416*angle/180) *z) + Y position</p>
+<p>&nbsp;&nbsp;&nbsp; X = Cos(3.1416*angle/180)*z + X position</p>
+<p>&nbsp;&nbsp;&nbsp; top = -(sin(3.1416 * 60 / 180) * 50) +500</p>
+<p>&nbsp;&nbsp;&nbsp; left = cos(3.1416 * 60 / 180) * 50 + 600</p>
+<p>&nbsp;&nbsp;&nbsp; top = 456</p>
+<p>&nbsp;&nbsp;&nbsp; left = 624</p>
+</font>
+<p><font face="Segoe UI">&nbsp;&nbsp;&nbsp; Q.2 We have a form and we want to 
+draw an oval on it having centre at 200 left and 256 top and also width of 100 
+and height of 50. Write the program if height of form is 480 and width is 640?</font></p>
+<p><font face="Segoe UI">&nbsp;&nbsp;&nbsp; Solution:-</font></p>
+<p><font face="Segoe UI">&nbsp;&nbsp;&nbsp; Me.AutoRedraw = True<br>
+&nbsp;&nbsp;&nbsp; Me.ScaleMode = 3<br>
+&nbsp;&nbsp;&nbsp; Me.ScaleWidth = 640<br>
+&nbsp;&nbsp;&nbsp; Me.ScaleHeight = 480<br>
+&nbsp;&nbsp;&nbsp; Dim k As Integer<br>
+&nbsp;&nbsp;&nbsp; Dim X As Integer, Y As Integer<br>
+&nbsp;&nbsp;&nbsp; For k = 0 To 360<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Y = -(Sin(3.1416 * k / 180) * 50) + 
+256<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X = Cos(3.1416 * k / 180) * 100 + 200<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Me.PSet (X, Y)<br>
+&nbsp;&nbsp;&nbsp; Next</font></p>
+<hr color="#000000" size="3">
+
+<p><b><font face="Segoe UI" size="6">Artillery Game function and Arcing:-</font></b></p>
+<p>&nbsp;&nbsp;&nbsp; Firstly you need to look on the code of game, you will 
+observe that the method described above is used several times</p>
+<p>&nbsp;&nbsp;&nbsp; By just giving input of desired angle and the distance 
+gust increases wthe above eq. is utilized. but one thing you all had observed is 
+arc of bomb. Here comes the difficult part.</p>
+<p>&nbsp;&nbsp;&nbsp; I just added a certain number to the Y axis and the 
+certain number increased every time. The number can be found. Just take a look 
+at this.&nbsp;&nbsp; </p>
+<p><img border="0" src="Graphs/Xval.gif" width="256" height="200"></p>
+<p>It is evident from this graph that if the value of x increases the value of x 
+in first graph increases 2 times and in second graph&nbsp; X increases to its 
+square.</p>
+<p>like if value of x = 3 then x *2 = 6 and x^2 = 9</p>
+<p>look at this table</p>
+<div align="center">
+  <center>
+  <table border="1" width="100%" cellpadding="2">
+    <tr>
+      <td width="20%" align="center">X</td>
+      <td width="20%" align="center">A=X*2</td>
+      <td width="20%" align="center">A increment</td>
+      <td width="20%" align="center">B=X^2</td>
+      <td width="20%" align="center">B increment</td>
+    </tr>
+    <tr>
+      <td width="20%" align="center">2</td>
+      <td width="20%" align="center">4</td>
+      <td width="20%" align="center">Not defined</td>
+      <td width="20%" align="center">4</td>
+      <td width="20%" align="center">Not defined</td>
+    </tr>
+    <tr>
+      <td width="20%" align="center">3</td>
+      <td width="20%" align="center">6</td>
+      <td width="20%" align="center">2</td>
+      <td width="20%" align="center">9</td>
+      <td width="20%" align="center">5</td>
+    </tr>
+    <tr>
+      <td width="20%" align="center">4</td>
+      <td width="20%" align="center">8</td>
+      <td width="20%" align="center">2</td>
+      <td width="20%" align="center">16</td>
+      <td width="20%" align="center">7</td>
+    </tr>
+    <tr>
+      <td width="20%" align="center">5</td>
+      <td width="20%" align="center">10</td>
+      <td width="20%" align="center">2</td>
+      <td width="20%" align="center">25</td>
+      <td width="20%" align="center">9</td>
+    </tr>
+    <tr>
+      <td width="20%" align="center">6</td>
+      <td width="20%" align="center">12</td>
+      <td width="20%" align="center">2</td>
+      <td width="20%" align="center">36</td>
+      <td width="20%" align="center">11</td>
+    </tr>
+  </table>
+  </center>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; You had observed that A increment is 2 but B 
+increment increased by 2. This is it, In the code I used w as variable so w^2 
+will be a good choice to be added to Y coordinate Because after every interval 
+the value increases until the value exceeds so that the bomb falls . I also used power ability. 
+Actually power and rate of arcing are inversely proportional. When we increase 
+power, the arcing capability decreases.So the final value to be added will be 
+(w^2)/power.Check this code</p>
+<p>bomb.Left = Cos(3.1416 * Angle / 180) * w - (w ^ 2) * pw / (50 * Power) + 
+command1.Left<br>
+bomb.Top = -(Sin(3.1416 * Angle / 180) * w) + (w ^ 2) / Power + command1.Top</p>
+<ul type="square">
+  <li>&nbsp;&nbsp;&nbsp;&nbsp; (w ^ 2) * pw / (50 * Power)</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This is 
+used for effect of wind, 'pw' is power of wind , 'Power' is user defined power. 
+As described w^2 is for wind arcing.</p>
+<p>&nbsp;&nbsp;&nbsp; Further if you want more details open the code. It is full 
+of magic features.</p>
+<hr color="#000000" size="3">
+
+<p><b><font face="Segoe UI" size="5">Artillery Game Play:-</font></b></p>
+<p>Use Angle and power to aim and click Fire to fire the bomb. Use arrow keys on 
+your keyboard. Left and Right keys for moving tank, Up and Down keys for 
+selecting angle, try holding spacebar for increasing power and release it to 
+fire</p>
+
+<p>Drag tanks and target to set their position</p>
+
+<p>Right click on the land and select any level. Double ckick to select the sky 
+color</p>
+<p>Click teleport to randomize places, Click new space to generate new land,</p>
+<p>Click load scape to load level from any GIF File having transparency 
+color.Click save scape to save the level.</p>
+<hr color="#000000" size="3">
+
+<p>In the end</p>
+<p>&nbsp;&nbsp;&nbsp; I would like to tell you that I am only 14.</p>
+<p>&nbsp;&nbsp;&nbsp; This is not a proper game this is a demonstrator for my 
+tutorial. I just wrote this tutorial to explain the importance of trignometry on 
+VB and programming games.Some of you would already be known to this.</p>
+<p>&nbsp;&nbsp;&nbsp; This is the first of kind artillery game on PSC and also 
+first my solid submission on PSC. </p>
+<p>&nbsp;&nbsp;&nbsp; If you like this code+tutorial please vote and if you 
+don't vote please give me some sujjesstions or comments.</p>
+
+</body>
+
+</html>
